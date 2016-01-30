@@ -45,7 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     helicopter.physicsBody = SKPhysicsBody(rectangleOfSize: helicopter.size)
     helicopter.physicsBody?.dynamic = true
     helicopter.physicsBody?.categoryBitMask = PhysicsCategory.Helicopter
-    helicopter.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile & PhysicsCategory.Helicopter
+    helicopter.physicsBody?.contactTestBitMask = PhysicsCategory.Enemy
     helicopter.physicsBody?.collisionBitMask = PhysicsCategory.None
 
     helicopter.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
@@ -156,12 +156,23 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     if ((firstBody.categoryBitMask & PhysicsCategory.Enemy != 0) &&
       (secondBody.categoryBitMask & PhysicsCategory.Projectile != 0)) {
-        projectileDidCollideWithMonster(firstBody.node as! SKSpriteNode, monster: secondBody.node as! SKSpriteNode)
+        projectileDidCollideWithEnemy(firstBody.node as! SKSpriteNode, monster: secondBody.node as! SKSpriteNode)
+    }
+    else if (firstBody.categoryBitMask & PhysicsCategory.Enemy != 0 &&
+      secondBody.categoryBitMask & PhysicsCategory.Helicopter != 0) {
+        enemyDidCollideWithHelicopter(firstBody.node as! SKSpriteNode);
     }
   }
 
 
-  func projectileDidCollideWithMonster(projectile:SKSpriteNode, monster:SKSpriteNode) {
+  func enemyDidCollideWithHelicopter(enemy: SKSpriteNode) {
+    print("Hit")
+    enemy.removeFromParent()
+    helicopter.removeFromParent()
+
+  }
+
+  func projectileDidCollideWithEnemy(projectile:SKSpriteNode, monster:SKSpriteNode) {
     print("Hit")
     projectile.removeFromParent()
     monster.removeFromParent()
