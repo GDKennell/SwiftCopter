@@ -56,7 +56,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     SKTexture(imageNamed:"Helicopter blade center.png")];
 
   func addHelicopter() {
-    helicopter.size = helicopter.size * GAME_SCALE
+    helicopter.size = UIImage(named: "Helicopter blade up.png")!.size * GAME_SCALE
     helicopter.physicsBody = SKPhysicsBody(rectangleOfSize: helicopter.size)
     helicopter.physicsBody?.dynamic = true
     helicopter.physicsBody?.categoryBitMask = PhysicsCategory.Helicopter
