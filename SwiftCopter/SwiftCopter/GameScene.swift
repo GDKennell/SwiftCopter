@@ -16,6 +16,8 @@ let GAME_GRAVITY: CGFloat = -1
 
 let HELICOPTER_FORCE: CGFloat = 70;
 
+let BIRD_ANIMATION_TIME: NSTimeInterval = 0.2
+
 let ENEMY_REPEAT_TIME: NSTimeInterval = 2
 
 struct PhysicsCategory {
@@ -70,9 +72,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     bird.physicsBody?.contactTestBitMask = PhysicsCategory.Projectile & PhysicsCategory.Helicopter
     bird.physicsBody?.collisionBitMask = PhysicsCategory.None
 
+    let birdFrames = [SKTexture(imageNamed:"bird 1.png"),
+                      SKTexture(imageNamed:"bird 2.png"),
+                      SKTexture(imageNamed:"bird 3.png")];
+
+    bird.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(birdFrames, timePerFrame: BIRD_ANIMATION_TIME)))
+
     addChild(bird)
 
-    let randDuration = random(min: CGFloat(2.0), max: CGFloat(3.0))
+    let randDuration = random(min: CGFloat(3.0), max: CGFloat(4.5))
     let actionMove = SKAction.moveTo(CGPoint(x: -bird.size.width/2, y: birdY), duration: NSTimeInterval(randDuration))
     let actionMoveDone = SKAction.removeFromParent()
     bird.runAction(SKAction.sequence([actionMove, actionMoveDone]))

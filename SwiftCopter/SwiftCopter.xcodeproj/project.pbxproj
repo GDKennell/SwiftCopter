@@ -195,6 +195,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA44EEE01C5D62B500C4FD84 /* CrowAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				CAC005041C5D3F6E00388576 /* bird 1.png */,
+				CAC005051C5D3F6E00388576 /* bird 2.png */,
+				CAC005061C5D3F6E00388576 /* bird 3.png */,
+			);
+			name = CrowAnimation;
+			sourceTree = "<group>";
+		};
 		CAC004CC1C5D3DE200388576 = {
 			isa = PBXGroup;
 			children = (
@@ -373,9 +383,7 @@
 		CAC0059B1C5D425300388576 /* Crow */ = {
 			isa = PBXGroup;
 			children = (
-				CAC005041C5D3F6E00388576 /* bird 1.png */,
-				CAC005051C5D3F6E00388576 /* bird 2.png */,
-				CAC005061C5D3F6E00388576 /* bird 3.png */,
+				CA44EEE01C5D62B500C4FD84 /* CrowAnimation */,
 				CAC0050E1C5D3F6E00388576 /* exploding crow 1.png */,
 				CAC0050F1C5D3F6E00388576 /* exploding crow 2.png */,
 				CAC005101C5D3F6E00388576 /* exploding crow 3.png */,
@@ -751,6 +759,7 @@
 				CAC004ED1C5D3DE200388576 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
