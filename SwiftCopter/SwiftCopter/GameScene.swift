@@ -14,7 +14,9 @@ let GAME_SCALE: CGFloat = 0.4
 
 let GAME_GRAVITY: CGFloat = -1
 
-let HELICOPTER_FORCE: CGFloat = 700;
+let HELICOPTER_FORCE: CGFloat = 70;
+
+let ENEMY_REPEAT_TIME: NSTimeInterval = 2
 
 struct PhysicsCategory {
   static let None      : UInt32 = 0
@@ -32,6 +34,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     setup()
     addHelicopter()
     addBird()
+    let enemyGenerationTimer = NSTimer.scheduledTimerWithTimeInterval(ENEMY_REPEAT_TIME, target: self, selector: "addBird", userInfo: nil, repeats: true);
   }
 
   func setup() {
@@ -42,6 +45,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
 
   func addHelicopter() {
+    helicopter.size = helicopter.size * GAME_SCALE
     helicopter.physicsBody = SKPhysicsBody(rectangleOfSize: helicopter.size)
     helicopter.physicsBody?.dynamic = true
     helicopter.physicsBody?.categoryBitMask = PhysicsCategory.Helicopter
@@ -49,7 +53,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     helicopter.physicsBody?.collisionBitMask = PhysicsCategory.None
 
     helicopter.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
-    helicopter.size = helicopter.size * GAME_SCALE
     addChild(helicopter)
     addBird()
   }
@@ -114,11 +117,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let gasRepeatInterval:NSTimeInterval = 1;
 
     let impulseAction = SKAction.applyForce(CGVectorMake(0, HELICOPTER_FORCE), duration: gasRepeatInterval);
-    helicopter.runAction(SKAction.repeatActionForever(impulseAction), withKey: kGasPedalActionKey)
+    helicopter.runAction(impulseAction, withKey: kGasPedalActionKey)
   }
 
   func stopGasPedal() {
-    helicopter.removeActionForKey(kGasPedalActionKey)
+    helicopter.removeAllActions()
   }
 
   func launchMissile(direction: CGPoint) {
@@ -168,7 +171,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   func enemyDidCollideWithHelicopter(enemy: SKSpriteNode) {
     print("Hit")
     enemy.removeFromParent()
-    helicopter.removeFromParent()
+//    helicopter.removeFromParent()
 
   }
 
