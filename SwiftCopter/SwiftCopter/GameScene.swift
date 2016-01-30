@@ -12,8 +12,9 @@ let kGasPedalActionKey = "GasPedalActionKey"
 
 let GAME_SCALE: CGFloat = 0.4
 
-//let GAME_GRAVITY: CGFloat = -3
 let GAME_GRAVITY: CGFloat = -1
+
+let HELICOPTER_FORCE: CGFloat = 700;
 
 struct PhysicsCategory {
   static let None      : UInt32 = 0
@@ -112,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     let gasRepeatInterval:NSTimeInterval = 1;
 
-    let impulseAction = SKAction.applyForce(CGVectorMake(10, 1000), duration: gasRepeatInterval);
+    let impulseAction = SKAction.applyForce(CGVectorMake(0, HELICOPTER_FORCE), duration: gasRepeatInterval);
     helicopter.runAction(SKAction.repeatActionForever(impulseAction), withKey: kGasPedalActionKey)
   }
 
