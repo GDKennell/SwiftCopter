@@ -8,6 +8,7 @@
 
 import SpriteKit
 
+let kHelicopterAnimationKey = "HelicopterAnimation"
 let kGasPedalActionKey = "GasPedalActionKey"
 
 let GAME_SCALE: CGFloat = 0.4
@@ -15,6 +16,9 @@ let GAME_SCALE: CGFloat = 0.4
 let GAME_GRAVITY: CGFloat = -1
 
 let HELICOPTER_FORCE: CGFloat = 70;
+
+let HELI_ANIMATION_TIME_SLOW: NSTimeInterval = 0.2;
+let HELI_ANIMATION_TIME_FAST: NSTimeInterval = 0.08;
 
 let BIRD_ANIMATION_TIME: NSTimeInterval = 0.2
 
@@ -46,6 +50,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     physicsWorld.contactDelegate = self
   }
 
+  let heliFrames = [SKTexture(imageNamed:"Helicopter blade up.png"),
+    SKTexture(imageNamed:"Helicopter blade center.png"),
+    SKTexture(imageNamed:"Helicopter blade down.png"),
+    SKTexture(imageNamed:"Helicopter blade center.png")];
+
   func addHelicopter() {
     helicopter.size = helicopter.size * GAME_SCALE
     helicopter.physicsBody = SKPhysicsBody(rectangleOfSize: helicopter.size)
@@ -55,6 +64,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     helicopter.physicsBody?.collisionBitMask = PhysicsCategory.None
 
     helicopter.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+
+
+    helicopter.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(heliFrames, timePerFrame: HELI_ANIMATION_TIME_SLOW)), withKey: kHelicopterAnimationKey)
+
     addChild(helicopter)
     addBird()
   }
@@ -120,16 +133,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
   func startGasPedal() {
     if (helicopter.position.y < 0 || helicopter.position.y > size.height) {
-      helicopter.position.y = size.height / 2;
+      helicopter.removeAllActions()
+      helicopter.removeFromParent();
+      addHelicopter()
     }
     let gasRepeatInterval:NSTimeInterval = 1;
 
     let impulseAction = SKAction.applyForce(CGVectorMake(0, HELICOPTER_FORCE), duration: gasRepeatInterval);
     helicopter.runAction(impulseAction, withKey: kGasPedalActionKey)
+    helicopter.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(heliFrames, timePerFrame: HELI_ANIMATION_TIME_FAST)));
   }
 
   func stopGasPedal() {
     helicopter.removeAllActions()
+    helicopter.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(heliFrames, timePerFrame: HELI_ANIMATION_TIME_SLOW)));
   }
 
   func launchMissile(direction: CGPoint) {
