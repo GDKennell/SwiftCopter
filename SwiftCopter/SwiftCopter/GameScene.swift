@@ -24,6 +24,8 @@ let BIRD_ANIMATION_TIME: NSTimeInterval = 0.2
 
 let ENEMY_REPEAT_TIME: NSTimeInterval = 2
 
+let BACKGROUND_SCROLL_SPEED: NSTimeInterval = 4;
+
 struct PhysicsCategory {
   static let None      : UInt32 = 0
   static let All       : UInt32 = UInt32.max
@@ -49,12 +51,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     physicsWorld.gravity = CGVectorMake(0, GAME_GRAVITY)
     physicsWorld.contactDelegate = self
-    setupBackground()
+    setupScrollingBackground(imageNamed: "background1 short")
   }
 
-  func setupBackground() {
-    let background1 = createBackgroundNode()
-    let background2 = createBackgroundNode()
+  func setupScrollingBackground(imageNamed imageName: String) {
+    let background1 = createBackgroundNode(imageNamed: imageName)
+    let background2 = createBackgroundNode(imageNamed: imageName)
 
     let originalBackgroundPosition = CGPoint(x: background1.size.width / 2, y: background1.size.height / 2)
     let resetPosition = originalBackgroundPosition + CGPoint(x: background1.size.width, y: 0)
@@ -71,13 +73,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     background2.position = resetPosition
 
     let originalContainerPosition = doubleBackground.position;
-    let moveAction = SKAction.moveByX(-background1.size.width, y: 0, duration: 15);
+    let moveAction = SKAction.moveByX(-background1.size.width, y: 0, duration: NSTimeInterval(background1.size.width) / (50 * BACKGROUND_SCROLL_SPEED));
     let resetAction = SKAction.moveTo(originalContainerPosition, duration: 0)
     doubleBackground.runAction(SKAction.repeatActionForever(SKAction.sequence([moveAction, resetAction])))
   }
 
-  func createBackgroundNode() -> SKSpriteNode {
-    let backgroundNode = SKSpriteNode(imageNamed: "background.png");
+  func createBackgroundNode(imageNamed imageName: String) -> SKSpriteNode {
+    let backgroundNode = SKSpriteNode(imageNamed: imageName);
     backgroundNode.size.width *= size.height / backgroundNode.size.height;
     backgroundNode.size.height = size.height;
     backgroundNode.zPosition = -1
