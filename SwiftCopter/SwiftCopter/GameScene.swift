@@ -40,12 +40,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     setup()
     addHelicopter()
     addBird()
-    let enemyGenerationTimer = NSTimer.scheduledTimerWithTimeInterval(ENEMY_REPEAT_TIME, target: self, selector: "addBird", userInfo: nil, repeats: true);
+    _ = NSTimer.scheduledTimerWithTimeInterval(ENEMY_REPEAT_TIME, target: self, selector: "addBird", userInfo: nil, repeats: true);
 
     let backgroundNode = SKSpriteNode(imageNamed: "background.png");
     backgroundNode.size.width *= size.height / backgroundNode.size.height;
     backgroundNode.size.height = size.height;
-    backgroundNode.position = CGPoint(x: backgroundNode.size.width / 2, y: backgroundNode.size.height / 2 - 100)
+    backgroundNode.position = CGPoint(x: backgroundNode.size.width / 2, y: backgroundNode.size.height / 2)
     backgroundNode.zPosition = -1
     addChild(backgroundNode)
   }
@@ -94,7 +94,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     let birdFrames = [SKTexture(imageNamed:"bird 1.png"),
                       SKTexture(imageNamed:"bird 2.png"),
-                      SKTexture(imageNamed:"bird 3.png")];
+                      SKTexture(imageNamed:"bird 3.png"),
+                      SKTexture(imageNamed:"bird 2.png")];
 
     bird.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(birdFrames, timePerFrame: BIRD_ANIMATION_TIME)))
 
