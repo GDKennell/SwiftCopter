@@ -53,19 +53,33 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
 
   func setupBackground() {
+    let background1 = createBackgroundNode()
+    let background2 = createBackgroundNode()
+
+    let originalPosition = CGPoint(x: background1.size.width / 2, y: background1.size.height / 2)
+    let resetPosition = originalPosition + CGPoint(x: background1.size.width, y: 0)
+
+    background1.position = originalPosition
+    background2.position = resetPosition
+
+    let moveAction = SKAction.moveByX(-background1.size.width, y: 0, duration: 15);
+    let resetAction = SKAction.moveTo(resetPosition, duration: 0)
+    background1.runAction(SKAction.sequence([moveAction, resetAction]), completion: {() in
+      background1.runAction(SKAction.repeatActionForever(SKAction.sequence([moveAction, moveAction, resetAction])))
+    })
+
+    background2.runAction(SKAction.repeatActionForever(SKAction.sequence([moveAction, moveAction, resetAction])));
+  }
+
+  func createBackgroundNode() -> SKSpriteNode {
     let backgroundNode = SKSpriteNode(imageNamed: "background.png");
     backgroundNode.size.width *= size.height / backgroundNode.size.height;
     backgroundNode.size.height = size.height;
-    let origianlPosition = CGPoint(x: backgroundNode.size.width / 2, y: backgroundNode.size.height / 2)
-    backgroundNode.position = origianlPosition
-    backgroundNode.zPosition = -1
     addChild(backgroundNode)
+    backgroundNode.zPosition = -1
 
-    let moveAction = SKAction.moveByX(-backgroundNode.size.width, y: 0, duration: 15);
-    let resetAction = SKAction.moveTo(origianlPosition, duration: 0)
-    backgroundNode.runAction(SKAction.repeatActionForever(SKAction.sequence([moveAction, resetAction])));
+    return backgroundNode;
   }
-
 
   let heliFrames = [SKTexture(imageNamed:"Helicopter blade up.png"),
     SKTexture(imageNamed:"Helicopter blade center.png"),
