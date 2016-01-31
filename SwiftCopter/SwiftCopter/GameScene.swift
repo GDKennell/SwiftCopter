@@ -56,26 +56,30 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let background1 = createBackgroundNode()
     let background2 = createBackgroundNode()
 
-    let originalPosition = CGPoint(x: background1.size.width / 2, y: background1.size.height / 2)
-    let resetPosition = originalPosition + CGPoint(x: background1.size.width, y: 0)
+    let originalBackgroundPosition = CGPoint(x: background1.size.width / 2, y: background1.size.height / 2)
+    let resetPosition = originalBackgroundPosition + CGPoint(x: background1.size.width, y: 0)
 
-    background1.position = originalPosition
+
+    let doubleBackground = SKSpriteNode(color: UIColor.clearColor(), size:
+      CGSize(width: 2 * background1.size.width, height: background1.size.height))
+    doubleBackground.addChild(background1)
+    doubleBackground.addChild(background2)
+
+    addChild(doubleBackground)
+
+    background1.position = originalBackgroundPosition
     background2.position = resetPosition
 
+    let originalContainerPosition = doubleBackground.position;
     let moveAction = SKAction.moveByX(-background1.size.width, y: 0, duration: 15);
-    let resetAction = SKAction.moveTo(resetPosition, duration: 0)
-    background1.runAction(SKAction.sequence([moveAction, resetAction]), completion: {() in
-      background1.runAction(SKAction.repeatActionForever(SKAction.sequence([moveAction, moveAction, resetAction])))
-    })
-
-    background2.runAction(SKAction.repeatActionForever(SKAction.sequence([moveAction, moveAction, resetAction])));
+    let resetAction = SKAction.moveTo(originalContainerPosition, duration: 0)
+    doubleBackground.runAction(SKAction.repeatActionForever(SKAction.sequence([moveAction, resetAction])))
   }
 
   func createBackgroundNode() -> SKSpriteNode {
     let backgroundNode = SKSpriteNode(imageNamed: "background.png");
     backgroundNode.size.width *= size.height / backgroundNode.size.height;
     backgroundNode.size.height = size.height;
-    addChild(backgroundNode)
     backgroundNode.zPosition = -1
 
     return backgroundNode;
