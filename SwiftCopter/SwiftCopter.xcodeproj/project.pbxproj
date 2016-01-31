@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA44EEE41C5D854200C4FD84 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = CA44EEE31C5D854200C4FD84 /* background.png */; };
+		CAB8FD8C1C5DAB54007CCC6C /* short background.png in Resources */ = {isa = PBXBuildFile; fileRef = CAB8FD8B1C5DAB54007CCC6C /* short background.png */; };
 		CAC004D91C5D3DE200388576 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC004D81C5D3DE200388576 /* AppDelegate.swift */; };
 		CAC004DD1C5D3DE200388576 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC004DC1C5D3DE200388576 /* GameScene.swift */; };
 		CAC004DF1C5D3DE200388576 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC004DE1C5D3DE200388576 /* GameViewController.swift */; };
@@ -50,12 +51,6 @@
 		CAC005691C5D3F6E00388576 /* Flying Squirrel.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC005141C5D3F6E00388576 /* Flying Squirrel.png */; };
 		CAC0056A1C5D3F6E00388576 /* forest_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CAC005151C5D3F6E00388576 /* forest_background.jpg */; };
 		CAC0056B1C5D3F6E00388576 /* Health bar and health fonts.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CAC005161C5D3F6E00388576 /* Health bar and health fonts.jpg */; };
-		CAC0056C1C5D3F6E00388576 /* Helicopter blade center.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC005171C5D3F6E00388576 /* Helicopter blade center.png */; };
-		CAC0056D1C5D3F6E00388576 /* Helicopter blade down.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC005181C5D3F6E00388576 /* Helicopter blade down.png */; };
-		CAC0056E1C5D3F6E00388576 /* Helicopter blade up.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC005191C5D3F6E00388576 /* Helicopter blade up.png */; };
-		CAC0056F1C5D3F6E00388576 /* Helicopter explosion 1.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC0051A1C5D3F6E00388576 /* Helicopter explosion 1.png */; };
-		CAC005701C5D3F6E00388576 /* Helicopter explosion 2.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC0051B1C5D3F6E00388576 /* Helicopter explosion 2.png */; };
-		CAC005711C5D3F6E00388576 /* Helicopter explosion 3.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC0051C1C5D3F6E00388576 /* Helicopter explosion 3.png */; };
 		CAC005721C5D3F6E00388576 /* Landing Platform.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC0051D1C5D3F6E00388576 /* Landing Platform.png */; };
 		CAC005731C5D3F6E00388576 /* Log.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC0051E1C5D3F6E00388576 /* Log.png */; };
 		CAC005741C5D3F6E00388576 /* Missile 1.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC0051F1C5D3F6E00388576 /* Missile 1.png */; };
@@ -93,10 +88,17 @@
 		CAC005951C5D3F6E00388576 /* Turret powerup.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC005441C5D3F6E00388576 /* Turret powerup.png */; };
 		CAC005961C5D3F6E00388576 /* Tut Background texture.png in Resources */ = {isa = PBXBuildFile; fileRef = CAC005461C5D3F6E00388576 /* Tut Background texture.png */; };
 		CAC005981C5D410C00388576 /* GraphicsMathHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC005971C5D410C00388576 /* GraphicsMathHelpers.swift */; };
+		CAF188C91C5DA88F00AA8942 /* Helicopter blade center.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF188C61C5DA88F00AA8942 /* Helicopter blade center.png */; };
+		CAF188CA1C5DA88F00AA8942 /* Helicopter blade down.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF188C71C5DA88F00AA8942 /* Helicopter blade down.png */; };
+		CAF188CB1C5DA88F00AA8942 /* Helicopter blade up.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF188C81C5DA88F00AA8942 /* Helicopter blade up.png */; };
+		CAF188CF1C5DA8CA00AA8942 /* Helicopter explosion 1.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF188CC1C5DA8CA00AA8942 /* Helicopter explosion 1.png */; };
+		CAF188D01C5DA8CA00AA8942 /* Helicopter explosion 2.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF188CD1C5DA8CA00AA8942 /* Helicopter explosion 2.png */; };
+		CAF188D11C5DA8CA00AA8942 /* Helicopter explosion 3.png in Resources */ = {isa = PBXBuildFile; fileRef = CAF188CE1C5DA8CA00AA8942 /* Helicopter explosion 3.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		CA44EEE31C5D854200C4FD84 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
+		CAB8FD8B1C5DAB54007CCC6C /* short background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "short background.png"; sourceTree = "<group>"; };
 		CAC004D51C5D3DE200388576 /* SwiftCopter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCopter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC004D81C5D3DE200388576 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAC004DC1C5D3DE200388576 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -141,12 +143,6 @@
 		CAC005141C5D3F6E00388576 /* Flying Squirrel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Flying Squirrel.png"; path = "../Michigan/Flying Squirrel.png"; sourceTree = "<group>"; };
 		CAC005151C5D3F6E00388576 /* forest_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = forest_background.jpg; sourceTree = "<group>"; };
 		CAC005161C5D3F6E00388576 /* Health bar and health fonts.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Health bar and health fonts.jpg"; sourceTree = "<group>"; };
-		CAC005171C5D3F6E00388576 /* Helicopter blade center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Helicopter blade center.png"; path = "Michigan/Helicopter blade center.png"; sourceTree = "<group>"; };
-		CAC005181C5D3F6E00388576 /* Helicopter blade down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Helicopter blade down.png"; path = "Michigan/Helicopter blade down.png"; sourceTree = "<group>"; };
-		CAC005191C5D3F6E00388576 /* Helicopter blade up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Helicopter blade up.png"; path = "Michigan/Helicopter blade up.png"; sourceTree = "<group>"; };
-		CAC0051A1C5D3F6E00388576 /* Helicopter explosion 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Helicopter explosion 1.png"; path = "Michigan/Helicopter explosion 1.png"; sourceTree = "<group>"; };
-		CAC0051B1C5D3F6E00388576 /* Helicopter explosion 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Helicopter explosion 2.png"; path = "Michigan/Helicopter explosion 2.png"; sourceTree = "<group>"; };
-		CAC0051C1C5D3F6E00388576 /* Helicopter explosion 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Helicopter explosion 3.png"; path = "Michigan/Helicopter explosion 3.png"; sourceTree = "<group>"; };
 		CAC0051D1C5D3F6E00388576 /* Landing Platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Landing Platform.png"; sourceTree = "<group>"; };
 		CAC0051E1C5D3F6E00388576 /* Log.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Log.png; sourceTree = "<group>"; };
 		CAC0051F1C5D3F6E00388576 /* Missile 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Missile 1.png"; path = "Michigan/Missile 1.png"; sourceTree = "<group>"; };
@@ -184,6 +180,12 @@
 		CAC005441C5D3F6E00388576 /* Turret powerup.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Turret powerup.png"; sourceTree = "<group>"; };
 		CAC005461C5D3F6E00388576 /* Tut Background texture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tut Background texture.png"; sourceTree = "<group>"; };
 		CAC005971C5D410C00388576 /* GraphicsMathHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphicsMathHelpers.swift; sourceTree = "<group>"; };
+		CAF188C61C5DA88F00AA8942 /* Helicopter blade center.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Helicopter blade center.png"; path = "Michigan/Helicopter/Helicopter blade center.png"; sourceTree = "<group>"; };
+		CAF188C71C5DA88F00AA8942 /* Helicopter blade down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Helicopter blade down.png"; path = "Michigan/Helicopter/Helicopter blade down.png"; sourceTree = "<group>"; };
+		CAF188C81C5DA88F00AA8942 /* Helicopter blade up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Helicopter blade up.png"; path = "Michigan/Helicopter/Helicopter blade up.png"; sourceTree = "<group>"; };
+		CAF188CC1C5DA8CA00AA8942 /* Helicopter explosion 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Helicopter explosion 1.png"; path = "Michigan/Helicopter Explosion/Helicopter explosion 1.png"; sourceTree = "<group>"; };
+		CAF188CD1C5DA8CA00AA8942 /* Helicopter explosion 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Helicopter explosion 2.png"; path = "Michigan/Helicopter Explosion/Helicopter explosion 2.png"; sourceTree = "<group>"; };
+		CAF188CE1C5DA8CA00AA8942 /* Helicopter explosion 3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Helicopter explosion 3.png"; path = "Michigan/Helicopter Explosion/Helicopter explosion 3.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +288,7 @@
 		CAC005001C5D3F6E00388576 /* Michigan */ = {
 			isa = PBXGroup;
 			children = (
+				CAB8FD8B1C5DAB54007CCC6C /* short background.png */,
 				CAC005011C5D3F6E00388576 /* background1 short.png */,
 				CAC005021C5D3F6E00388576 /* background1.gif */,
 				CA44EEE31C5D854200C4FD84 /* background.png */,
@@ -450,12 +453,12 @@
 			isa = PBXGroup;
 			children = (
 				CAC004F81C5D3F6E00388576 /* High copper with turret.png */,
-				CAC005171C5D3F6E00388576 /* Helicopter blade center.png */,
-				CAC005181C5D3F6E00388576 /* Helicopter blade down.png */,
-				CAC005191C5D3F6E00388576 /* Helicopter blade up.png */,
-				CAC0051A1C5D3F6E00388576 /* Helicopter explosion 1.png */,
-				CAC0051B1C5D3F6E00388576 /* Helicopter explosion 2.png */,
-				CAC0051C1C5D3F6E00388576 /* Helicopter explosion 3.png */,
+				CAF188C61C5DA88F00AA8942 /* Helicopter blade center.png */,
+				CAF188C71C5DA88F00AA8942 /* Helicopter blade down.png */,
+				CAF188C81C5DA88F00AA8942 /* Helicopter blade up.png */,
+				CAF188CC1C5DA8CA00AA8942 /* Helicopter explosion 1.png */,
+				CAF188CD1C5DA8CA00AA8942 /* Helicopter explosion 2.png */,
+				CAF188CE1C5DA8CA00AA8942 /* Helicopter explosion 3.png */,
 			);
 			name = Helicopter;
 			sourceTree = "<group>";
@@ -522,12 +525,11 @@
 				CA44EEE41C5D854200C4FD84 /* background.png in Resources */,
 				CAC005961C5D3F6E00388576 /* Tut Background texture.png in Resources */,
 				CAC005601C5D3F6E00388576 /* Crane 4.png in Resources */,
-				CAC0056E1C5D3F6E00388576 /* Helicopter blade up.png in Resources */,
-				CAC005711C5D3F6E00388576 /* Helicopter explosion 3.png in Resources */,
 				CAC005641C5D3F6E00388576 /* exploding crow 2.png in Resources */,
 				CAC005761C5D3F6E00388576 /* Missile 3.png in Resources */,
 				CAC005741C5D3F6E00388576 /* Missile 1.png in Resources */,
 				CAC005811C5D3F6E00388576 /* nyan3.png in Resources */,
+				CAF188CF1C5DA8CA00AA8942 /* Helicopter explosion 1.png in Resources */,
 				CAC005571C5D3F6E00388576 /* background1.gif in Resources */,
 				CAC0055B1C5D3F6E00388576 /* bird 3.png in Resources */,
 				CAC0056B1C5D3F6E00388576 /* Health bar and health fonts.jpg in Resources */,
@@ -543,6 +545,7 @@
 				CAC0058F1C5D3F6E00388576 /* Pause button.png in Resources */,
 				CAC005561C5D3F6E00388576 /* background1 short.png in Resources */,
 				CAC005551C5D3F6E00388576 /* Menue Play button.png in Resources */,
+				CAB8FD8C1C5DAB54007CCC6C /* short background.png in Resources */,
 				CAC0058E1C5D3F6E00388576 /* Menue button.png in Resources */,
 				CAC0054C1C5D3F6E00388576 /* Health bar 5 full.png in Resources */,
 				CAC005841C5D3F6E00388576 /* nyan6.png in Resources */,
@@ -550,6 +553,7 @@
 				CAC005481C5D3F6E00388576 /* Health bar 1.png in Resources */,
 				CAC005851C5D3F6E00388576 /* nyansprite.png in Resources */,
 				CAC0057B1C5D3F6E00388576 /* squirrel tree.png in Resources */,
+				CAF188CB1C5DA88F00AA8942 /* Helicopter blade up.png in Resources */,
 				CAC0054B1C5D3F6E00388576 /* Health bar 4.png in Resources */,
 				CAC005511C5D3F6E00388576 /*  Menue Tut button.png in Resources */,
 				CAC005881C5D3F6E00388576 /* powerup_machine_gun.png in Resources */,
@@ -571,34 +575,34 @@
 				CAC005941C5D3F6E00388576 /* Turret cut out.png in Resources */,
 				CAC005681C5D3F6E00388576 /* exploding squirrel 3.png in Resources */,
 				CAC0058D1C5D3F6E00388576 /* 3button.png in Resources */,
+				CAF188D01C5DA8CA00AA8942 /* Helicopter explosion 2.png in Resources */,
 				CAC0055A1C5D3F6E00388576 /* bird 2.png in Resources */,
 				CAC005791C5D3F6E00388576 /* Objects 1.psd in Resources */,
 				CAC005911C5D3F6E00388576 /* Resume button.png in Resources */,
 				CAC005831C5D3F6E00388576 /* nyan5.png in Resources */,
-				CAC005701C5D3F6E00388576 /* Helicopter explosion 2.png in Resources */,
 				CAC0055F1C5D3F6E00388576 /* Crane 3.png in Resources */,
-				CAC0056D1C5D3F6E00388576 /* Helicopter blade down.png in Resources */,
 				CAC005621C5D3F6E00388576 /* Down Squirrel.png in Resources */,
-				CAC0056C1C5D3F6E00388576 /* Helicopter blade center.png in Resources */,
 				CAC005531C5D3F6E00388576 /* Menue Copter bkgrd.png in Resources */,
 				CAC005921C5D3F6E00388576 /* Low copter with turret.png in Resources */,
 				CAC005691C5D3F6E00388576 /* Flying Squirrel.png in Resources */,
 				CAC005861C5D3F6E00388576 /* nyan.png in Resources */,
 				CAC0057C1C5D3F6E00388576 /* superman.jpeg in Resources */,
+				CAF188CA1C5DA88F00AA8942 /* Helicopter blade down.png in Resources */,
 				CAC0057A1C5D3F6E00388576 /* Small Background.png in Resources */,
 				CAC005671C5D3F6E00388576 /* exploding squirrel 2.png in Resources */,
+				CAF188C91C5DA88F00AA8942 /* Helicopter blade center.png in Resources */,
 				CAC005541C5D3F6E00388576 /* Menue Copter Quest .png in Resources */,
 				CAC004E41C5D3DE200388576 /* Assets.xcassets in Resources */,
 				CAC005471C5D3F6E00388576 /* bieber.jpg in Resources */,
 				CAC005781C5D3F6E00388576 /* Objects 1.png in Resources */,
 				CAC004E21C5D3DE200388576 /* Main.storyboard in Resources */,
 				CAC0056A1C5D3F6E00388576 /* forest_background.jpg in Resources */,
+				CAF188D11C5DA8CA00AA8942 /* Helicopter explosion 3.png in Resources */,
 				CAC005651C5D3F6E00388576 /* exploding crow 3.png in Resources */,
 				CAC005581C5D3F6E00388576 /* background1.png in Resources */,
 				CAC005771C5D3F6E00388576 /* Objects 1.jpg in Resources */,
 				CAC005631C5D3F6E00388576 /* exploding crow 1.png in Resources */,
 				CAC0055E1C5D3F6E00388576 /* Crane 2.png in Resources */,
-				CAC0056F1C5D3F6E00388576 /* Helicopter explosion 1.png in Resources */,
 				CAC0054A1C5D3F6E00388576 /* Health bar 3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

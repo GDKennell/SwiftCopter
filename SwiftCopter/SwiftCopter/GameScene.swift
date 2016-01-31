@@ -51,7 +51,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     physicsWorld.gravity = CGVectorMake(0, GAME_GRAVITY)
     physicsWorld.contactDelegate = self
-    setupScrollingBackground(imageNamed: "background1 short")
+    setupScrollingBackground(imageNamed: "short background")
   }
 
   func setupScrollingBackground(imageNamed imageName: String) {
