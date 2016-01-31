@@ -41,6 +41,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     addHelicopter()
     addBird()
     let enemyGenerationTimer = NSTimer.scheduledTimerWithTimeInterval(ENEMY_REPEAT_TIME, target: self, selector: "addBird", userInfo: nil, repeats: true);
+
+    let backgroundNode = SKSpriteNode(imageNamed: "background.png");
+    backgroundNode.size.width *= size.height / backgroundNode.size.height;
+    backgroundNode.size.height = size.height;
+    backgroundNode.position = CGPoint(x: backgroundNode.size.width / 2, y: backgroundNode.size.height / 2 - 100)
+    backgroundNode.zPosition = -1
+    addChild(backgroundNode)
   }
 
   func setup() {
@@ -137,7 +144,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
       helicopter.removeFromParent();
       addHelicopter()
     }
-    let gasRepeatInterval:NSTimeInterval = 1;
+    let gasRepeatInterval:NSTimeInterval = 100;
 
     let impulseAction = SKAction.applyForce(CGVectorMake(0, HELICOPTER_FORCE), duration: gasRepeatInterval);
     helicopter.runAction(impulseAction, withKey: kGasPedalActionKey)

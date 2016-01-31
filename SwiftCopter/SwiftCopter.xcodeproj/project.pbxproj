@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA44EEE41C5D854200C4FD84 /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = CA44EEE31C5D854200C4FD84 /* background.png */; };
 		CAC004D91C5D3DE200388576 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC004D81C5D3DE200388576 /* AppDelegate.swift */; };
 		CAC004DD1C5D3DE200388576 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC004DC1C5D3DE200388576 /* GameScene.swift */; };
 		CAC004DF1C5D3DE200388576 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC004DE1C5D3DE200388576 /* GameViewController.swift */; };
@@ -95,6 +96,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CA44EEE31C5D854200C4FD84 /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 		CAC004D51C5D3DE200388576 /* SwiftCopter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCopter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAC004D81C5D3DE200388576 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CAC004DC1C5D3DE200388576 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 			children = (
 				CAC005011C5D3F6E00388576 /* background1 short.png */,
 				CAC005021C5D3F6E00388576 /* background1.gif */,
+				CA44EEE31C5D854200C4FD84 /* background.png */,
 				CAC005031C5D3F6E00388576 /* background1.png */,
 				CAC005151C5D3F6E00388576 /* forest_background.jpg */,
 				CAC005161C5D3F6E00388576 /* Health bar and health fonts.jpg */,
@@ -516,6 +519,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAC005821C5D3F6E00388576 /* nyan4.png in Resources */,
+				CA44EEE41C5D854200C4FD84 /* background.png in Resources */,
 				CAC005961C5D3F6E00388576 /* Tut Background texture.png in Resources */,
 				CAC005601C5D3F6E00388576 /* Crane 4.png in Resources */,
 				CAC0056E1C5D3F6E00388576 /* Helicopter blade up.png in Resources */,
