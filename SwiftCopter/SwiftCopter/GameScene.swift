@@ -20,6 +20,8 @@ let HELICOPTER_FORCE: CGFloat = 70;
 let HELI_ANIMATION_TIME_SLOW: NSTimeInterval = 0.2;
 let HELI_ANIMATION_TIME_FAST: NSTimeInterval = 0.08;
 
+let HELI_EXPLOSION_TIME: NSTimeInterval = 0.03
+
 let BIRD_ANIMATION_TIME: NSTimeInterval = 0.2
 
 let ENEMY_REPEAT_TIME: NSTimeInterval = 2
@@ -170,7 +172,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
 
   func startGasPedal() {
-    if (helicopter.position.y < 0 || helicopter.position.y > size.height) {
+    if (helicopter.parent == nil || helicopter.position.y < 0 || helicopter.position.y > size.height) {
       helicopter.removeAllActions()
       helicopter.removeFromParent();
       addHelicopter()
@@ -230,12 +232,27 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
   }
 
-
   func enemyDidCollideWithHelicopter(enemy: SKSpriteNode) {
-    print("Hit")
-    enemy.removeFromParent()
-//    helicopter.removeFromParent()
+      print("Hit")
+      enemy.removeFromParent()
+      explodeHelicopter()
 
+  }
+  func explodeHelicopter() {
+     let heliExplosionSprite = SKSpriteNode(imageNamed: "Helicopter explosion 1.png")
+     addChild(heliExplosionSprite)
+     heliExplosionSprite.size = helicopter.size;
+     heliExplosionSprite.position = helicopter.position
+
+    helicopter.removeFromParent();
+
+    let explosionFrames = [SKTexture(imageNamed:"Helicopter explosion 1.png"),
+                           SKTexture(imageNamed:"Helicopter explosion 2.png"),
+                           SKTexture(imageNamed:"Helicopter explosion 3.png")];
+
+    let animationAction = SKAction.repeatAction(SKAction.animateWithNormalTextures(explosionFrames, timePerFrame: HELI_EXPLOSION_TIME), count: 1)
+    let removeAction = SKAction.removeFromParent();
+    heliExplosionSprite.runAction(SKAction.sequence([animationAction, removeAction]));
   }
 
   func projectileDidCollideWithEnemy(projectile:SKSpriteNode, monster:SKSpriteNode) {
