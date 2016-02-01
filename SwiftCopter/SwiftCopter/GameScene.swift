@@ -34,6 +34,7 @@ struct PhysicsCategory {
   static let Enemy     : UInt32 = 0b1       // 1
   static let Projectile: UInt32 = 0b10      // 2
   static let Helicopter: UInt32 = 0b100     // 4
+  static let ScreenEdge: UInt32 = 0b1000    // 8
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
@@ -54,6 +55,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     physicsWorld.gravity = CGVectorMake(0, GAME_GRAVITY)
     physicsWorld.contactDelegate = self
     setupScrollingBackground(imageNamed: "short background")
+
+    let screenEdgeSprite = SKSpriteNode()
+    screenEdgeSprite.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
+    screenEdgeSprite.physicsBody?.categoryBitMask = PhysicsCategory.ScreenEdge
+    screenEdgeSprite.physicsBody?.contactTestBitMask = PhysicsCategory.Helicopter
+    screenEdgeSprite.physicsBody?.collisionBitMask = PhysicsCategory.None
+    addChild(screenEdgeSprite)
   }
 
   func setupScrollingBackground(imageNamed imageName: String) {
@@ -99,7 +107,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     helicopter.physicsBody = SKPhysicsBody(rectangleOfSize: helicopter.size)
     helicopter.physicsBody?.dynamic = true
     helicopter.physicsBody?.categoryBitMask = PhysicsCategory.Helicopter
-    helicopter.physicsBody?.contactTestBitMask = PhysicsCategory.Enemy
+    helicopter.physicsBody?.contactTestBitMask = PhysicsCategory.Enemy// & PhysicsCategory.ScreenEdge
     helicopter.physicsBody?.collisionBitMask = PhysicsCategory.None
 
     helicopter.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
@@ -227,8 +235,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         projectileDidCollideWithEnemy(firstBody.node as! SKSpriteNode, enemy: secondBody.node as! SKSpriteNode)
     }
     else if (firstBody.categoryBitMask & PhysicsCategory.Enemy != 0 &&
-      secondBody.categoryBitMask & PhysicsCategory.Helicopter != 0) {
+            secondBody.categoryBitMask & PhysicsCategory.Helicopter != 0) {
         enemyDidCollideWithHelicopter(firstBody.node as! SKSpriteNode);
+    }
+    else if (firstBody.categoryBitMask & PhysicsCategory.Helicopter != 0 &&
+            secondBody.categoryBitMask & PhysicsCategory.ScreenEdge != 0) {
+        explodeHelicopter();
     }
   }
 
