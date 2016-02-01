@@ -20,7 +20,7 @@ let HELICOPTER_FORCE: CGFloat = 70;
 let HELI_ANIMATION_TIME_SLOW: NSTimeInterval = 0.2;
 let HELI_ANIMATION_TIME_FAST: NSTimeInterval = 0.08;
 
-let HELI_EXPLOSION_TIME: NSTimeInterval = 0.03
+let EXPLOSION_TIME: NSTimeInterval = 0.02
 
 let BIRD_ANIMATION_TIME: NSTimeInterval = 0.2
 
@@ -233,26 +233,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   }
 
   func enemyDidCollideWithHelicopter(enemy: SKSpriteNode) {
-      print("Hit")
-      enemy.removeFromParent()
-      explodeHelicopter()
-
+    print("Hit")
+    enemy.removeFromParent()
+    explodeHelicopter()
+    explodeCrow(enemy)
   }
+
   func explodeHelicopter() {
-     let heliExplosionSprite = SKSpriteNode(imageNamed: "Helicopter explosion 1.png")
-     addChild(heliExplosionSprite)
-     heliExplosionSprite.size = helicopter.size;
-     heliExplosionSprite.position = helicopter.position
+    let heliExplosionSprite = SKSpriteNode(imageNamed: "Helicopter explosion 1.png")
+    addChild(heliExplosionSprite)
+    heliExplosionSprite.size = heliExplosionSprite.size * GAME_SCALE
+    heliExplosionSprite.position = helicopter.position
 
     helicopter.removeFromParent();
 
     let explosionFrames = [SKTexture(imageNamed:"Helicopter explosion 1.png"),
-                           SKTexture(imageNamed:"Helicopter explosion 2.png"),
-                           SKTexture(imageNamed:"Helicopter explosion 3.png")];
+                          SKTexture(imageNamed:"Helicopter explosion 2.png"),
+                          SKTexture(imageNamed:"Helicopter explosion 3.png")];
 
-    let animationAction = SKAction.repeatAction(SKAction.animateWithNormalTextures(explosionFrames, timePerFrame: HELI_EXPLOSION_TIME), count: 1)
+    let animationAction = SKAction.repeatAction(SKAction.animateWithNormalTextures(explosionFrames, timePerFrame: EXPLOSION_TIME), count: 1)
     let removeAction = SKAction.removeFromParent();
     heliExplosionSprite.runAction(SKAction.sequence([animationAction, removeAction]));
+  }
+
+  func explodeCrow(crow: SKSpriteNode) {
+    let crowExplosionSprite = SKSpriteNode(imageNamed: "exploding crow 1.png")
+    addChild(crowExplosionSprite)
+    crowExplosionSprite.size = crowExplosionSprite.size * GAME_SCALE;
+    crowExplosionSprite.position = crow.position
+
+    helicopter.removeFromParent();
+
+    let explosionFrames = [SKTexture(imageNamed:"exploding crow 1.png"),
+                          SKTexture(imageNamed:"exploding crow 2.png"),
+                          SKTexture(imageNamed:"exploding crow 3.png")];
+
+    let animationAction = SKAction.repeatAction(SKAction.animateWithNormalTextures(explosionFrames, timePerFrame: EXPLOSION_TIME), count: 1)
+    let removeAction = SKAction.removeFromParent();
+    crowExplosionSprite.runAction(SKAction.sequence([animationAction, removeAction]));
   }
 
   func projectileDidCollideWithEnemy(projectile:SKSpriteNode, monster:SKSpriteNode) {
