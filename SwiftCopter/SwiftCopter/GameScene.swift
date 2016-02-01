@@ -224,7 +224,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     if ((firstBody.categoryBitMask & PhysicsCategory.Enemy != 0) &&
       (secondBody.categoryBitMask & PhysicsCategory.Projectile != 0)) {
-        projectileDidCollideWithEnemy(firstBody.node as! SKSpriteNode, monster: secondBody.node as! SKSpriteNode)
+        projectileDidCollideWithEnemy(firstBody.node as! SKSpriteNode, enemy: secondBody.node as! SKSpriteNode)
     }
     else if (firstBody.categoryBitMask & PhysicsCategory.Enemy != 0 &&
       secondBody.categoryBitMask & PhysicsCategory.Helicopter != 0) {
@@ -259,10 +259,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
   func explodeCrow(crow: SKSpriteNode) {
     let crowExplosionSprite = SKSpriteNode(imageNamed: "exploding crow 1.png")
     addChild(crowExplosionSprite)
-    crowExplosionSprite.size = crowExplosionSprite.size * GAME_SCALE;
+    crowExplosionSprite.size = crowExplosionSprite.size * GAME_SCALE * 1.8;
     crowExplosionSprite.position = crow.position
 
-    helicopter.removeFromParent();
+    crow.removeFromParent();
 
     let explosionFrames = [SKTexture(imageNamed:"exploding crow 1.png"),
                           SKTexture(imageNamed:"exploding crow 2.png"),
@@ -273,10 +273,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     crowExplosionSprite.runAction(SKAction.sequence([animationAction, removeAction]));
   }
 
-  func projectileDidCollideWithEnemy(projectile:SKSpriteNode, monster:SKSpriteNode) {
+  func projectileDidCollideWithEnemy(projectile:SKSpriteNode, enemy:SKSpriteNode) {
     print("Hit")
     projectile.removeFromParent()
-    monster.removeFromParent()
+    explodeCrow(enemy)
   }
 
 }
