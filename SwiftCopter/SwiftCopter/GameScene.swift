@@ -28,6 +28,8 @@ let ENEMY_REPEAT_TIME: NSTimeInterval = 2
 
 let BACKGROUND_SCROLL_SPEED: NSTimeInterval = 4;
 
+let INTRO_TIME: NSTimeInterval = 10
+
 struct PhysicsCategory {
   static let None      : UInt32 = 0
   static let All       : UInt32 = UInt32.max
@@ -40,13 +42,17 @@ struct PhysicsCategory {
 class GameScene: SKScene, SKPhysicsContactDelegate {
 
   let helicopter = SKSpriteNode(imageNamed: "Helicopter blade up")
+  var enemyGenerationTimer:NSTimer? = nil
 
   override func didMoveToView(view: SKView) {
     setup()
     addHelicopter()
-    addBird()
-    _ = NSTimer.scheduledTimerWithTimeInterval(ENEMY_REPEAT_TIME, target: self, selector: "addBird", userInfo: nil, repeats: true);
 
+    self.performSelector("beginEnemyGeneration", withObject: nil, afterDelay: INTRO_TIME)
+  }
+
+  func beginEnemyGeneration() {
+    enemyGenerationTimer = NSTimer.scheduledTimerWithTimeInterval(ENEMY_REPEAT_TIME, target: self, selector: "addBird", userInfo: nil, repeats: true)
   }
 
   func setup() {
@@ -55,7 +61,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     physicsWorld.gravity = CGVectorMake(0, GAME_GRAVITY)
     physicsWorld.contactDelegate = self
     setupScrollingBackground(imageNamed: "short background")
+    setupScreenEdge()
+  }
 
+  func setupScreenEdge() {
     let screenEdgeSprite = SKSpriteNode()
     screenEdgeSprite.physicsBody = SKPhysicsBody(edgeLoopFromRect: self.frame)
     screenEdgeSprite.physicsBody?.categoryBitMask = PhysicsCategory.ScreenEdge
@@ -116,7 +125,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     helicopter.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(heliFrames, timePerFrame: HELI_ANIMATION_TIME_SLOW)), withKey: kHelicopterAnimationKey)
 
     addChild(helicopter)
-    addBird()
   }
 
   func addBird() {
