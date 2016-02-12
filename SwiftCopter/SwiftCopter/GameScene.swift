@@ -119,7 +119,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     helicopter.physicsBody?.contactTestBitMask = PhysicsCategory.Enemy// & PhysicsCategory.ScreenEdge
     helicopter.physicsBody?.collisionBitMask = PhysicsCategory.None
 
-    helicopter.position = CGPoint(x: size.width * 0.1, y: size.height * 0.5)
+    let leftEdgeBuffer: CGFloat = 0.05 * self.view!.frame.size.width;
+    helicopter.position = CGPoint(x: helicopter.size.width + leftEdgeBuffer - helicopter.size.width / 2.0, y: size.height * 0.5)
 
 
     helicopter.runAction(SKAction.repeatActionForever(SKAction.animateWithTextures(heliFrames, timePerFrame: HELI_ANIMATION_TIME_SLOW)), withKey: kHelicopterAnimationKey)
