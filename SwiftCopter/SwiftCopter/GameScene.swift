@@ -8,6 +8,8 @@
 
 import SpriteKit
 
+//MARK: Constants
+
 let kHelicopterAnimationKey = "HelicopterAnimation"
 let kGasPedalActionKey = "GasPedalActionKey"
 
@@ -40,6 +42,7 @@ struct PhysicsCategory {
 }
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
+  //MARK: Properties
 
   let helicopter = SKSpriteNode(imageNamed: "Helicopter blade up")
   var enemyGenerationTimer:NSTimer? = nil
@@ -50,6 +53,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 
     self.performSelector("beginEnemyGeneration", withObject: nil, afterDelay: INTRO_TIME)
   }
+
+  //MARK: Setup
 
   func beginEnemyGeneration() {
     enemyGenerationTimer = NSTimer.scheduledTimerWithTimeInterval(ENEMY_REPEAT_TIME, target: self, selector: "addBird", userInfo: nil, repeats: true)
@@ -96,6 +101,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let resetAction = SKAction.moveTo(originalContainerPosition, duration: 0)
     doubleBackground.runAction(SKAction.repeatActionForever(SKAction.sequence([moveAction, resetAction])))
   }
+
+  //MARK: Setup Helpers
 
   func createBackgroundNode(imageNamed imageName: String) -> SKSpriteNode {
     let backgroundNode = SKSpriteNode(imageNamed: imageName);
@@ -157,6 +164,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
   }
 
+  //MARK: Touch Events
+
   override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
     guard let touchLocation = touches.first?.locationInNode(self) else {
       return
@@ -187,6 +196,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 
   }
+
+  //MARK: Flying and Shooting Controls
 
   func startGasPedal() {
     if (helicopter.parent == nil || helicopter.position.y < 0 || helicopter.position.y > size.height) {
@@ -227,6 +238,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let actionMoveDone = SKAction.removeFromParent()
     projectile.runAction(SKAction.sequence([actionMove, actionMoveDone]))
   }
+
+  //MARK: Collisions
 
   func didBeginContact(contact: SKPhysicsContact) {
     var firstBody: SKPhysicsBody
