@@ -24,11 +24,11 @@ let EXPLOSION_TIME: NSTimeInterval = 0.02
 
 let BIRD_ANIMATION_TIME: NSTimeInterval = 0.2
 
-let ENEMY_REPEAT_TIME: NSTimeInterval = 2
+let ENEMY_REPEAT_TIME: NSTimeInterval = 1.25
 
-let BACKGROUND_SCROLL_SPEED: NSTimeInterval = 4;
+let BACKGROUND_SCROLL_SPEED: NSTimeInterval = 2.5;
 
-let INTRO_TIME: NSTimeInterval = 10
+let INTRO_TIME: NSTimeInterval = 5
 
 struct PhysicsCategory {
   static let None      : UInt32 = 0
@@ -249,15 +249,28 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     else if (firstBody.categoryBitMask & PhysicsCategory.Helicopter != 0 &&
             secondBody.categoryBitMask & PhysicsCategory.ScreenEdge != 0) {
-        explodeHelicopter();
+        helicopterCrash();
     }
   }
 
   func enemyDidCollideWithHelicopter(enemy: SKSpriteNode) {
     print("Hit")
-    enemy.removeFromParent()
-    explodeHelicopter()
     explodeCrow(enemy)
+
+    helicopterCrash()
+  }
+
+  func helicopterCrash() {
+    explodeHelicopter()
+    removeAllEnemies()
+  }
+
+  func removeAllEnemies() {
+    for child in children {
+      if child.physicsBody != nil && child.physicsBody!.categoryBitMask & PhysicsCategory.Enemy != 0 {
+        child.removeFromParent()
+      }
+    }
   }
 
   func explodeHelicopter() {
